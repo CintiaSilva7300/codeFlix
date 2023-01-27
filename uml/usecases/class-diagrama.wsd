@@ -1,0 +1,17 @@
+@startuml
+
+entity Categoria
+
+Categoria : uuiq id
+Categoria : string name
+Categoria : string description
+Categoria : boolean is_active
+Categoria : date created_at
+
+Categoria : create()
+Categoria : update()
+Categoria : activate()
+Categoria : deactivate()
+Categoria : delete()
+
+@enduml
