@@ -7,6 +7,7 @@
 	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
 	"dockerComposeFile": [
 		"../docker-compose.yaml",
+		"../docker-compose.override.yaml",
 		"docker-compose.yml"
 	],
 
