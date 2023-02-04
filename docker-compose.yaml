@@ -3,6 +3,6 @@ version: '3'
 services:
   app:
     build: .
-    container_name: micro-videos-app-test
+    container_name: micro-videos-app
     volumes:
       - .:/home/node/app

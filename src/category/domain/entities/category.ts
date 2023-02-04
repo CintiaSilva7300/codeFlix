@@ -1,44 +1,43 @@
-import UniqueEntityId from '../../../@seedwork/domain/unique-entity-id.vo';
+import UniqueEntityID from '../../../@seedwork/domain/unique-entity-id.vo'
 
 export type CategoryProperties = {
-     name: string, 
-     description?: string, 
-     is_active?: boolean, 
-     created_at?: Date
+  name: string
+  description?: string
+  is_active?: boolean
+  created_at?: Date
 }
 
 export class Category {
+  public readonly id: UniqueEntityID
 
-    public readonly id: UniqueEntityId;
+  constructor(public readonly props: CategoryProperties, id?: UniqueEntityID) {
+    this.id = id || new UniqueEntityID()
+    this.props.description = this.props.description ?? null
+    this.props.is_active = this.props.is_active ?? true
+    this.props.created_at = this.props.created_at ?? new Date()
+  }
 
-    constructor(public readonly props: CategoryProperties, id?: UniqueEntityId){
-        this.id = id || new UniqueEntityId();
-        this.props.description = this.props.description ?? null;
-        this.props.is_active = this.props.is_active ?? true;
-        this.props.created_at = this.props.created_at ?? new Date();
-    };
+  get name(): string {
+    return this.props.name
+  }
 
-    get name(): string {
-        return this.props.name
-    }
+  get description(): string | undefined {
+    return this.props.description
+  }
 
-    get description() {
-        return this.props.description
-    }
+  private set description(value: string) {
+    this.props.description = value ?? null
+  }
 
-    private set description(value: string){
-        this.props.description = value ?? null;
-    }
+  get is_active(): boolean | undefined {
+    return this.props.is_active
+  }
 
-    get is_active() {
-        return this.props.is_active
-    }
+  private set is_active(value: boolean) {
+    this.props.is_active = value ?? null
+  }
 
-    private set is_active(value: boolean){
-        this.props.is_active = value ?? true;
-    }
-    
-    get created_at() {
-        return this.props.created_at
-    }
+  get created_at(): Date | undefined {
+    return this.props.created_at
+  }
 }
