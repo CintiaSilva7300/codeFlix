@@ -1,23 +1,20 @@
-import UniqueEntityId from "../value-objects/unique-entity-id.vo";
+import UniqueEntityID from "../value-objects/unique-entity-id.vo";
 
-export abstract class Entity<Props = any> {
-  public readonly uniqueEntityId: UniqueEntityId;
+export default abstract class Entity<Props> {
+    public readonly uniqueEntityId: UniqueEntityID
 
-  constructor(public readonly props: Props, id?: UniqueEntityId) {
-    this.uniqueEntityId = id || new UniqueEntityId();
-  }
+    constructor(public readonly props: Props, id?: UniqueEntityID) {
+        this.uniqueEntityId = id || new UniqueEntityID();
+    }
 
-  get id(): string {
-    return this.uniqueEntityId.value;
-  }
+    get id() {
+        return this.uniqueEntityId.value;
+    }
 
-  toJSON(): Required<{ id: string } & Props> {
-    return {
-      id: this.id,
-      ...this.props,
-    } as Required<{ id: string } & Props>;
-  }
+    toJSON(): Required<{ id: string } & Props> {
+        return {
+            id: this.id,
+            ...this.props
+        } as Required<{ id: string } & Props>
+    }
 }
-
-export default Entity;
-//entity para object

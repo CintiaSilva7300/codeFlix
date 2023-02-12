@@ -9,7 +9,6 @@ describe('Category Unit Tests', (): void => {
   test('constructor of category', (): void => {
     let category: Category = new Category({ name: 'Movie' })
     let props = omit(category.props, 'created_at')
-    expect(Category.validate).toHaveBeenCalled()
     expect(props).toStrictEqual({
       name: 'Movie',
       description: null,
@@ -24,6 +23,7 @@ describe('Category Unit Tests', (): void => {
       is_active: false,
       created_at
     })
+    expect(Category.validate).toHaveBeenCalled()
     expect(category.props).toStrictEqual({
       name: 'Movie',
       description: 'some category',
@@ -135,29 +135,29 @@ describe('Category Unit Tests', (): void => {
     expect(category.created_at).toBe(created_at)
   })
 
-  it("should update a category", () => {
+  test('should update a category', () => {
     const category = new Category({ name: "Movie" });
     category.update("Documentary", "some description");
-    expect(Category.validate).toHaveBeenCalledTimes(2);
-    expect(category.name).toBe("Documentary");
-    expect(category.description).toBe("some description");
-  });
+    expect(Category.validate).toHaveBeenCalledTimes(2)
+    expect(category.name).toBe("Documentary")
+    expect(category.description).toBe("some description")
+  })
 
-  it("should active a category", () => {
+  test('should active a category', () => {
     const category = new Category({
       name: "Filmes",
       is_active: false,
     });
     category.activate();
-    expect(category.is_active).toBeTruthy();
-  });
+    expect(category.is_active).toBeTruthy()
+  })
 
-  test("should disable a category", () => {
+  test('should disable a category', () => {
     const category = new Category({
       name: "Filmes",
       is_active: true,
     });
     category.deactivate();
-    expect(category.is_active).toBeFalsy();
-  });
+    expect(category.is_active).toBeFalsy()
+  })
 })

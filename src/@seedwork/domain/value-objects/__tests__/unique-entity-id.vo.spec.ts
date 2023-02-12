@@ -1,4 +1,4 @@
-import InvalidUuidError from '../../../errors/invalid-uuid.errors'
+import InvalidUuidError from '../../errors/invalid-uuid.errors'
 import UniqueEntityID from '../unique-entity-id.vo'
 import { validate as uuidValidate } from 'uuid'
 
