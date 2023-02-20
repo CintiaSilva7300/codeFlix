@@ -1,4 +1,4 @@
-import ValidationError from "../../errors/invalid-uuid.errors";
+import { ValidationError } from "../../../domain/errors/validation-error";
 import ValidatorRules from "../validator-rules";
 
 type Values = {
